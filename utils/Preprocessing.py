@@ -1,13 +1,14 @@
 import datetime
 import re
 
+# 불용어 사전 불러오기
 stopwords = []
 with open('utils/StopWords.txt', 'r', encoding='utf-8') as f:
     stopwords = f.read().splitlines()
 
-def DatetoString(timeStr):
-    time = datetime.datetime.strptime(timeStr, "%a, %d %b %Y %H:%M:%S %z")
-    return time.strftime("%Y-%m-%d %H:%M:%S")
+def DatetoString(timeStr, input="%a, %d %b %Y %H:%M:%S %z", output="%Y-%m-%d %H:%M:%S"):
+    time = datetime.datetime.strptime(timeStr, input)
+    return time.strftime(output)
 
 def CheckMySQLString(str):
     text = re.sub('|'.join(stopwords), ' ', str)
