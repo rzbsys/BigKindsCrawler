@@ -1,9 +1,13 @@
 import datetime
 import re
+import os
 
 # 불용어 사전 불러오기
+dir = os.path.dirname(__file__)
+rel_path = os.path.join(dir, 'assets', 'StopWords.txt')
+
 stopwords = []
-with open('utils/StopWords.txt', 'r', encoding='utf-8') as f:
+with open(rel_path, 'r', encoding='utf-8') as f:
     stopwords = f.read().splitlines()
 
 def DatetoString(timeStr, input="%a, %d %b %Y %H:%M:%S %z", output="%Y-%m-%d %H:%M:%S"):
