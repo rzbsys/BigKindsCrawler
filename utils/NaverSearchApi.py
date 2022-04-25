@@ -1,10 +1,10 @@
 import requests
 import os
 from dotenv import load_dotenv
-from utils.Database import SQL
-from utils.Preprocessing import DatetoString, CheckMySQLString
+from Database import SQL
+from Preprocessing import DatetoString, CheckMySQLString
 from tqdm import tqdm
-from utils.Log import Log
+from Log import Log
 
 # 환경변수 불러오기
 load_dotenv()
@@ -12,13 +12,12 @@ clientID = os.getenv('NAVER_CLIENT_ID')
 clientKey = os.getenv('NAVER_CLIENT_KEY')
 
 def SaveCSV(json, output='./output.csv'):
-
     try:
         # 기존에 파일이 존재할 시 제거
         if (os.path.exists(output)):
             os.remove(output)
     except OSError:
-        raise Exception('기존 파일을 제거하는데 실패했습니다.')
+        raise Exception('기존 파일을 제거하는데 실패했습니다. 파일이 다른 프로그램에서 사용되고 있는지 확인해주세요.')
 
     # 파일 열기
     f = open(output, 'w', encoding='utf-8-sig')
@@ -69,5 +68,3 @@ def GetNaverNewsApi(query, output="json", display=100, start=1, sort="date"):
     else:
         # 예외처리
         raise Exception("API의 output 형식이 잘못되었습니다.")
-    
-    
