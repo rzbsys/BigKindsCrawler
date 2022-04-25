@@ -2,10 +2,10 @@
 from datetime import datetime
 import requests
 import json
-from Log import Log
+from .Log import Log
 from tqdm import tqdm
-from Database import SQL
-from Preprocessing import DatetoString, CheckMySQLString
+from .Database import SQL
+from .Preprocessing import DatetoString, CheckMySQLString
 
 # 뉴스 카테고리 번호를 찾는 API와 검색 API의 요청 URL
 CategoryApiUrl = 'https://www.bigkinds.or.kr/api/categories.do'

@@ -1,10 +1,10 @@
 import requests
 import os
 from dotenv import load_dotenv
-from Database import SQL
-from Preprocessing import DatetoString, CheckMySQLString
+from .Database import SQL
+from .Preprocessing import DatetoString, CheckMySQLString
 from tqdm import tqdm
-from Log import Log
+from .Log import Log
 
 # 환경변수 불러오기
 load_dotenv()
